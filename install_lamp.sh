@@ -96,6 +96,12 @@ npm install -g grunt grunt-cli npm-check-updates yo bower > /dev/null 2>&1
 echo -e "\n--- Add environment variables locally for artisan ---\n"
 cat >> /home/vagrant/.bashrc <<EOF
 
+# Set envvars
+export APP_ENV=$APPENV
+export DB_HOST=$DBHOST
+export DB_PASS=$DBPASSWD
+EOF
+
 echo -e "\n--- Add Mailhog ---\n"
 wget --quiet -O ~/mailhog https://github.com/mailhog/MailHog/releases/download/v0.1.5/MailHog_linux_amd64
 chmod +x ~/mailhog
@@ -113,9 +119,3 @@ EOL
 
 # Start it now in the background
 sudo service mailhog restart  > /dev/null 2>&1
-
-# Set envvars
-export APP_ENV=$APPENV
-export DB_HOST=$DBHOST
-export DB_PASS=$DBPASSWD
-EOF
