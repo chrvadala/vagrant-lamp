@@ -99,6 +99,24 @@ ln -fs /vagrant/vendor/bin/phpunit /usr/local/bin/phpunit
 echo -e "\n--- Add environment variables locally for artisan ---\n"
 cat >> /home/vagrant/.bashrc <<EOF
 
+echo -e "\n--- Add Mailhog ---\n"
+wget --quiet -O ~/mailhog https://github.com/mailhog/MailHog/releases/download/v0.1.5/MailHog_linux_amd64
+chmod +x ~/mailhog
+
+# Make it start on reboot
+sudo tee /etc/init/mailhog.conf <<EOL
+description "Mailhog"
+start on runlevel [2345]
+stop on runlevel [!2345]
+respawn
+pre-start script
+    exec su - vagrant -c "/usr/bin/env ~/mailhog > /dev/null 2>&1 &"
+end script
+EOL
+
+# Start it now in the background
+sudo service mailhog restart  > /dev/null 2>&1
+
 # Set envvars
 export APP_ENV=$APPENV
 export DB_HOST=$DBHOST
