@@ -93,9 +93,6 @@ curl --silent https://npmjs.org/install.sh | sh > /dev/null 2>&1
 echo -e "\n--- Installing javascript components ---\n"
 npm install -g grunt grunt-cli npm-check-updates yo bower > /dev/null 2>&1
 
-echo -e "\n--- Creating a symlink for future phpunit use ---\n"
-ln -fs /vagrant/vendor/bin/phpunit /usr/local/bin/phpunit
-
 echo -e "\n--- Add environment variables locally for artisan ---\n"
 cat >> /home/vagrant/.bashrc <<EOF
 
