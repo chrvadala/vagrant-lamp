@@ -103,8 +103,8 @@ export DB_PASS=$DBPASSWD
 EOF
 
 echo -e "\n--- Add Mailhog ---\n"
-wget --quiet -O ~/mailhog https://github.com/mailhog/MailHog/releases/download/v0.1.5/MailHog_linux_amd64
-chmod +x ~/mailhog
+wget --quiet -O /home/vagrant/mailhog https://github.com/mailhog/MailHog/releases/download/v0.1.5/MailHog_linux_amd64
+chmod +x /home/vagrant/mailhog
 
 # Make it start on reboot
 sudo tee /etc/init/mailhog.conf <<EOL
@@ -113,7 +113,7 @@ start on runlevel [2345]
 stop on runlevel [!2345]
 respawn
 pre-start script
-    exec su - vagrant -c "/usr/bin/env ~/mailhog > /dev/null 2>&1 &"
+    exec su - vagrant -c "/usr/bin/env /home/vagrant/mailhog > /dev/null 2>&1 &"
 end script
 EOL
 
