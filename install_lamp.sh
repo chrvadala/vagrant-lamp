@@ -107,7 +107,7 @@ wget --quiet -O /home/vagrant/mailhog https://github.com/mailhog/MailHog/release
 chmod +x /home/vagrant/mailhog
 
 # Make it start on reboot
-sudo tee /etc/init/mailhog.conf <<EOL
+cat >  /etc/init/mailhog.conf <<EOL
 description "Mailhog"
 start on runlevel [2345]
 stop on runlevel [!2345]
