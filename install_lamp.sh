@@ -31,7 +31,7 @@ echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect none" | debconf-se
 apt-get -y install mysql-server-5.5 phpmyadmin > /dev/null 2>&1
 
 echo -e "\n--- Installing PHP-specific packages ---\n"
-apt-get -y install php5 apache2 libapache2-mod-php5 php5-curl php5-gd php5-mcrypt php5-mysql php5-intl > /dev/null 2>&1
+apt-get -y install php5 apache2 libapache2-mod-php5 php5-curl php5-gd php5-mcrypt php5-mysql php5-intl php5-imagick > /dev/null 2>&1
 
 echo -e "\n--- Enabling mod-rewrite ---\n"
 a2enmod rewrite > /dev/null 2>&1
