@@ -41,7 +41,7 @@ sed -i "s/AllowOverride None/AllowOverride All/g" /etc/apache2/apache2.conf
 
 echo -e "\n--- Setting document root to public directory ---\n"
 rm -rf /var/www
-ln -fs /vagrant/public* /var/www
+ln -fs /vagrant/public /var/www
 
 echo -e "\n--- We definitly need to see the PHP errors, turning them on ---\n"
 sed -i "s/error_reporting = .*/error_reporting = E_ALL/" /etc/php5/apache2/php.ini
