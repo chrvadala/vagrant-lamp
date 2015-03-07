@@ -102,6 +102,12 @@ export DB_HOST=$DBHOST
 export DB_PASS=$DBPASSWD
 EOF
 
+cat >  /etc/my.cnf <<EOL
+[client]
+user = root
+password = example
+EOL
+
 echo -e "\n--- Add Mailhog ---\n"
 wget --quiet -O /home/vagrant/mailhog https://github.com/mailhog/MailHog/releases/download/v0.1.5/MailHog_linux_amd64
 chmod +x /home/vagrant/mailhog
